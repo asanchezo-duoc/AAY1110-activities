@@ -8,6 +8,8 @@
 | **IL** | IL 2.1, IL 2.3, IL 2.4 |
 | **Tiempo estimado** | 1 hora |
 
+> Si aún no practicaste cómo crear un script y loguear al sistema (`logger`/journalctl), revisa primero [Act_2.2.1](../Act_2.2.1/).
+
 ## Caso (según guía oficial)
 
 Eres el administrador de sistemas de una empresa que requiere respaldar diariamente `/home/usuario/datos` hacia `/backups`. Cada respaldo debe:
