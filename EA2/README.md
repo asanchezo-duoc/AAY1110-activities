@@ -18,12 +18,15 @@
 |---|---|---|---|
 | [Act_2.1.2](Act_2.1.2/) | Ejecución de scripts (fundamentos de Shell) | IL 2.1 | Bash, AWS Academy Learner Lab |
 | [Act_2.2.2](Act_2.2.2/) | Script de respaldo automatizado con cron | IL 2.1, IL 2.3, IL 2.4 | Bash, tar, cron |
+| [Act_2.3.1](Act_2.3.1/) | Práctica de conceptos: contenedores, Docker y Git (contraparte de la clase teórica en PPT) | IL 2.2 | Docker docs, GitHub Skills |
 | [Act_2.3.2](Act_2.3.2/) | Instalación de Docker (Desktop y Engine) | IL 2.2 | Docker Desktop, Docker Engine |
 | [Act_2.3.3](Act_2.3.3/) | Creación de imágenes con Dockerfile y DockerHub | IL 2.2 | Docker Build, DockerHub |
 | [Act_2.3.4](Act_2.3.4/) | Fundamentos de Docker + Git/GitHub | IL 2.2 | Git, GitHub, Docker CLI |
 
 ## Recomendación de avance
 
-Las actividades están ordenadas de forma incremental: cada una da por hecho lo que ya se practicó en la anterior (ej. en Act_2.3.4 se asume que Docker ya está instalado desde Act_2.3.2, y que ya existe una imagen construida desde Act_2.3.3). Conviene resolverlas en orden.
+Las actividades están ordenadas de forma incremental: cada una da por hecho lo que ya se practicó en la anterior (ej. Act_2.3.2 asume los conceptos vistos en Act_2.3.1; Act_2.3.4 asume que Docker ya está instalado desde Act_2.3.2, y que ya existe una imagen construida desde Act_2.3.3). Conviene resolverlas en orden.
+
+> Act_2.3.1 es la contraparte práctica de una clase teórica que se dicta en PPT (no un `.docx` de laboratorio como el resto) — por eso su formato es distinto: menos "instalar y verificar", más ejercicios guiados y dos actividades oficiales embebidas (resumen de Docker docs, curso GitHub Skills).
 
 Todas usan **AWS Academy Learner Lab** para levantar la máquina virtual Linux. Recuerda siempre **detener/eliminar la instancia al terminar** para no seguir consumiendo créditos del laboratorio.

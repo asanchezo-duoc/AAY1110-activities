@@ -10,6 +10,7 @@ Este repositorio **no reemplaza** las guías oficiales entregadas en AVA: las **
 EA2/
 ├── Act_2.1.2/   Ejecución de scripts (fundamentos de Shell)
 ├── Act_2.2.2/   Script de respaldo automatizado con cron
+├── Act_2.3.1/   Práctica de conceptos: contenedores, Docker y Git
 ├── Act_2.3.2/   Instalación de Docker (Desktop y Engine)
 ├── Act_2.3.3/   Creación de imágenes con Dockerfile y DockerHub
 └── Act_2.3.4/   Fundamentos de Docker + Git/GitHub

@@ -8,6 +8,8 @@
 | **IL** | IL 2.2 — Despliega aplicaciones utilizando contenedores |
 | **Tiempo estimado** | 1 hora |
 
+> Si aún no viste los conceptos de contenedores/Docker/Git de la clase teórica, repasa primero [Act_2.3.1](../Act_2.3.1/).
+
 ## Contexto ampliado
 
 La guía pide instalar Docker en **dos variantes**: Docker Desktop (Windows) y Docker Engine (Linux, ej. Ubuntu), y que puedas explicar la diferencia entre ambas. Esta actividad es más "instalación guiada" que "caso a resolver", así que aquí sí conviene tener el comando exacto a mano — lo que se evalúa es que entiendas **qué instalaste y por qué es distinto** en cada plataforma.
