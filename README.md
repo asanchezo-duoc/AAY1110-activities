@@ -13,6 +13,10 @@ EA2/
 ├── Act_2.3.2/   Instalación de Docker (Desktop y Engine)
 ├── Act_2.3.3/   Creación de imágenes con Dockerfile y DockerHub
 └── Act_2.3.4/   Fundamentos de Docker + Git/GitHub
+
+recursos/
+├── bash-basico/   Un script de ejemplo por cada elemento básico de Bash
+└── cron-at/       Ejemplos comentados de cron y at
 ```
 
 Cada carpeta `Act_2.X.Y` tiene su propio `README.md` con:
@@ -27,3 +31,8 @@ Cada carpeta `Act_2.X.Y` tiene su propio `README.md` con:
 > Este material **no contiene las soluciones finales** que se entregan como evidencia — es apoyo para entender el "cómo" y el "por qué" antes de resolver el caso planteado por tu docente.
 
 Ver [EA2/README.md](EA2/README.md) para el detalle de la evaluación y el listado completo de actividades.
+
+## Recursos de referencia (independientes de la evaluación)
+
+- [recursos/bash-basico](recursos/bash-basico/) — hola mundo, `echo`, `printf`, `for`, `while`, `if`: un ejemplo mínimo por elemento, para repasar antes de las actividades de EA2.
+- [recursos/cron-at](recursos/cron-at/) — ejemplos comentados de `cron` (tareas recurrentes) y `at` (tareas de una sola ejecución futura).

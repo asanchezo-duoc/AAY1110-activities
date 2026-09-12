@@ -53,6 +53,8 @@ FECHA=$(date +"%Y%m%d_%H%M%S")   # ej: 20260912_020000
 crontab -e
 ```
 
+Más ejemplos comentados de líneas de crontab (y de `at`, para tareas de una sola ejecución) en [recursos/cron-at](../../recursos/cron-at/).
+
 Formato de una línea de crontab:
 
 ```

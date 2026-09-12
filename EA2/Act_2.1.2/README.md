@@ -8,6 +8,8 @@
 | **IL** | IL 2.1 — Construye rutinas para automatizar tareas administrativas |
 | **Tiempo estimado** | 1 hora |
 
+> Si aún no manejas bien `echo`, `printf`, `for`, `while` e `if`, repasa primero [recursos/bash-basico](../../recursos/bash-basico/) — un ejemplo mínimo por elemento.
+
 ## Contexto ampliado
 
 Antes de automatizar respaldos o construir imágenes Docker (próximas actividades), necesitas dominar lo básico: **qué es un script, cómo el sistema decide con qué intérprete ejecutarlo, y cómo darle permisos**. Esta actividad usa dos scripts de ejemplo ya provistos por la asignatura (carpeta `scripts/`) para practicar exactamente eso, sin la presión de escribir lógica nueva todavía.

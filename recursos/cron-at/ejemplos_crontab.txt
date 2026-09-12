@@ -1,0 +1,30 @@
+# Ejemplos de líneas de crontab (para pegar dentro de `crontab -e`)
+# Formato: minuto  hora  dia-mes  mes  dia-semana   comando
+#            0-59  0-23   1-31   1-12   0-7 (0 y 7 = domingo)
+
+# Cada minuto (útil solo para PROBAR que la tarea corre; no dejar así en producción)
+* * * * * /home/usuario/script.sh >> /home/usuario/log.txt 2>&1
+
+# Todos los días a las 2:00 AM (ej. el respaldo de Act_2.2.2)
+0 2 * * * /home/usuario/backup.sh >> /home/usuario/backup.log 2>&1
+
+# Cada 15 minutos
+*/15 * * * * /home/usuario/monitor.sh >> /home/usuario/monitor.log 2>&1
+
+# Cada hora, en punto
+0 * * * * /home/usuario/chequeo_horario.sh
+
+# Todos los lunes a las 8:00 AM
+0 8 * * 1 /home/usuario/reporte_semanal.sh
+
+# De lunes a viernes, cada hora entre las 9:00 y las 18:00 (horario laboral)
+0 9-18 * * 1-5 /home/usuario/chequeo_laboral.sh
+
+# El primer día de cada mes, a medianoche
+0 0 1 * * /home/usuario/respaldo_mensual.sh
+
+# Cada 6 horas (00:00, 06:00, 12:00, 18:00)
+0 */6 * * * /home/usuario/sincronizar.sh
+
+# Al reiniciar el sistema (no usa los 5 campos habituales)
+@reboot /home/usuario/inicio.sh
