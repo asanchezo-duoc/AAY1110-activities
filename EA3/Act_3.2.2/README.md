@@ -63,11 +63,14 @@ Si ya tienes la VM de [Act_3.1.2](../Act_3.1.2/) corriendo, puedes reutilizarla.
 
 ## Tarea 1 — Configurar firewall con firewalld
 
-`firewalld` es el **firewall por defecto en Red Hat, CentOS y Fedora**. A diferencia de iptables/nftables (donde escribes reglas directamente), firewalld trabaja con el concepto de **zonas**: cada zona define un nivel de confianza y las reglas se aplican a interfaces o conexiones asignadas a esa zona.
+`firewalld` es el **firewall estándar en Red Hat, CentOS y Fedora**. A diferencia de iptables/nftables (donde escribes reglas directamente), firewalld trabaja con el concepto de **zonas**: cada zona define un nivel de confianza y las reglas se aplican a interfaces o conexiones asignadas a esa zona.
 
-### 1.1 Verificar que firewalld está activo
+### 1.1 Instalar y activar firewalld
+
+En la AMI de Red Hat del Learner Lab, `firewalld` **no viene preinstalado**. Instálalo primero:
 
 ```bash
+sudo dnf install -y firewalld
 sudo systemctl enable --now firewalld
 sudo firewall-cmd --state
 # Salida esperada: running
@@ -470,7 +473,7 @@ nc -zv <IP_PUBLICA> 3306   # debería fallar
 | **IPv4 + IPv6** | Una regla cubre ambos | Una regla cubre ambos | Requiere `iptables` + `ip6tables` | Una tabla `inet` cubre ambos |
 | **Cambios en caliente** | Sí (`--reload` sin perder conexiones) | Requiere `ufw reload` | Inmediatos pero pueden cortar conexiones | Inmediatos |
 | **Persistencia** | Automática con `--permanent` | Automática (`ufw enable`) | Manual (`service iptables save`) | Manual (`nft list ruleset > /etc/nftables.conf`) |
-| **Default en Red Hat 9** | Sí (preinstalado y activo) | No (requiere EPEL) | Disponible pero legacy | Sí (backend de firewalld) |
+| **Default en Red Hat 9** | Estándar pero no siempre preinstalado (la AMI del Learner Lab requiere `dnf install firewalld`) | No (requiere EPEL) | Disponible pero legacy | Sí (backend de firewalld) |
 | **Default en Ubuntu** | Disponible pero no por defecto | Sí (preinstalado) | Disponible | Disponible |
 | **Producción empresarial** | Recomendado en RHEL/CentOS/Fedora | Servidores Ubuntu simples | Legacy / scripts existentes | Recomendado para reglas manuales avanzadas |
 

@@ -118,7 +118,14 @@ PasswordAuthentication no
 
 ### 1.3 Abrir el puerto 2222 en el firewall del sistema
 
-En Red Hat, el firewall del sistema es `firewalld`:
+En Red Hat el firewall estándar es `firewalld`. En la AMI del Learner Lab **no viene instalado**, así que primero hay que instalarlo y activarlo:
+
+```bash
+sudo dnf install -y firewalld
+sudo systemctl enable --now firewalld
+```
+
+Ahora abre el nuevo puerto:
 
 ```bash
 sudo firewall-cmd --permanent --add-port=2222/tcp
@@ -134,10 +141,10 @@ sudo systemctl restart sshd
 > **No cierres esta sesión SSH todavía.** Abre una **segunda terminal** y prueba conectarte por el nuevo puerto:
 
 ```bash
-ssh -i ~/Downloads/labsuser.pem -p 2222 ec2-user@<IP_PUBLICA>
+ssh -p 2222 ec2-user@<IP_PUBLICA>
 ```
 
-Si la conexión funciona, el cambio está bien. Si no funciona, vuelve a la sesión original (que sigue abierta en el puerto anterior) y revisa la configuración.
+O abre una segunda pestaña de Instance Connect (si configuraste el puerto 2222 en el Security Group). Si la conexión funciona, el cambio está bien. Si no, vuelve a la sesión original (que sigue abierta en el puerto anterior) y revisa la configuración.
 
 ### 1.5 Verificaciones
 
@@ -366,7 +373,7 @@ Si no tienes `nmap`, puedes usar `nc` (netcat) para probar puertos puntuales, o 
 |---|---|---|
 | Me quedé fuera del servidor tras cambiar el puerto SSH | No abriste el puerto 2222 en el Security Group de AWS antes de reiniciar `sshd` | Usa **EC2 Instance Connect** desde la consola web de AWS para entrar y revertir el cambio, o edita el Security Group desde la consola |
 | `fail2ban-client status sshd` dice "Sorry but the jail 'sshd' does not exist" | El archivo `jail.local` tiene un error de sintaxis, o el servicio no se reinició | Revisa la sintaxis de `jail.local` (sin espacios en los nombres de sección) y ejecuta `sudo systemctl restart fail2ban` |
-| `firewall-cmd: command not found` | `firewalld` no está instalado o no está activo | `sudo dnf install -y firewalld && sudo systemctl enable --now firewalld` |
+| `firewall-cmd: command not found` | `firewalld` no está instalado (la AMI del Learner Lab no lo trae) | `sudo dnf install -y firewalld && sudo systemctl enable --now firewalld` |
 | `nmap` muestra el puerto 22 como "open" todavía | No removiste el servicio `ssh` del firewall, o no hiciste `--reload` | `sudo firewall-cmd --permanent --remove-service=ssh && sudo firewall-cmd --reload` |
 | `dnf install fail2ban` falla con "No match" | EPEL no está habilitado | Ejecuta `sudo dnf install -y epel-release` primero |
 | Instance Connect dice "No se pudo conectar a la instancia" | Red Hat no trae el paquete Instance Connect preinstalado | Sigue la guía [Habilitar EC2 Instance Connect en Red Hat](../../recursos/instance-connect-rhel/) |
