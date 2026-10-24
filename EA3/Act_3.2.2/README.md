@@ -484,7 +484,7 @@ nc -zv <IP_PUBLICA> 3306   # debería fallar
 
 | Síntoma | Causa probable | Solución |
 |---|---|---|
-| Me quedé fuera del servidor al activar el firewall | No permitiste el puerto SSH antes de activar | Usa **EC2 Instance Connect** desde la consola web para entrar y corregir, o termina la instancia y crea una nueva |
+| Me quedé fuera del servidor al activar el firewall | No permitiste el puerto SSH antes de activar | Usa **EC2 Instance Connect** desde la consola web para entrar y corregir (ver [Anexo de Instance Connect en Act_3.1.2](../Act_3.1.2/README.md#anexo--habilitar-ec2-instance-connect-en-red-hat)), o termina la instancia y crea una nueva |
 | `ufw: command not found` | UFW no está instalado en Red Hat | `sudo dnf install -y epel-release && sudo dnf install -y ufw` |
 | Las reglas de iptables desaparecen al reiniciar | No se guardaron con `service iptables save` | Ejecuta `sudo service iptables save` después de configurar |
 | `nft: command not found` | El paquete `nftables` no está instalado | `sudo dnf install -y nftables` |
