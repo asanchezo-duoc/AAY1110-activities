@@ -50,26 +50,21 @@ En este laboratorio vas a:
    | **Name** | `hardening-lab` |
    | **AMI** | Red Hat Enterprise Linux 9 (busca "Red Hat" en el buscador de AMIs, selecciona la versión HVM x86_64 que aparezca como Free tier eligible) |
    | **Instance type** | `t2.micro` (capa gratuita) |
-   | **Key pair** | Selecciona `vockey` (la llave por defecto del Learner Lab). Si no existe, crea un par nuevo y **descarga el archivo `.pem`** |
+   | **Key pair** | Selecciona `vockey` (la llave por defecto del Learner Lab) |
    | **Security Group** | Crea uno nuevo o usa el existente. Asegúrate de que permita **SSH (puerto 22)** desde tu IP |
    | **Storage** | 10 GiB gp3 (valor por defecto, suficiente) |
 
 9. Haz clic en **Launch instance**.
 
-10. Espera a que el **Instance state** sea `Running` y copia la **Public IPv4 address**.
+10. Espera a que el **Instance state** sea `Running`.
 
-### Conectarte por SSH
+### Conectarte con EC2 Instance Connect
 
-11. Desde tu terminal local:
+11. Selecciona tu instancia → botón **Connect** (Conectar) → pestaña **EC2 Instance Connect** → usuario `ec2-user` → **Connect**.
 
-    ```bash
-    chmod 400 ~/Downloads/labsuser.pem   # solo la primera vez
-    ssh -i ~/Downloads/labsuser.pem ec2-user@<IP_PUBLICA>
-    ```
+    Se abrirá una terminal directamente en el navegador, sin necesidad de descargar llaves `.pem` ni configurar SSH en tu equipo.
 
-    > En Learner Lab, el archivo suele llamarse `labsuser.pem` y se descarga desde el panel "AWS Details" del laboratorio. El usuario por defecto en Red Hat es `ec2-user`.
-
-    Si usas Windows, puedes conectarte desde **PowerShell** con el mismo comando `ssh`, o usar la opción **EC2 Instance Connect** desde la consola web de AWS (botón "Connect" en la instancia).
+    > **¿No conecta?** Red Hat no trae Instance Connect preinstalado. Sigue la guía [Habilitar EC2 Instance Connect en Red Hat](../../recursos/instance-connect-rhel/) — solo se necesita hacer **una vez** por instancia.
 
 12. Verifica que estás dentro:
 
@@ -107,7 +102,7 @@ PasswordAuthentication no
 
 > **¿Por qué cambiar el puerto?** El puerto 22 es el primero que escanean los bots automáticos. Cambiar a un puerto no estándar no es "seguridad real" (security through obscurity), pero **reduce enormemente el ruido** de intentos de fuerza bruta en los logs.
 >
-> **¿Por qué deshabilitar PasswordAuthentication?** Las contraseñas se pueden adivinar por fuerza bruta. Las claves SSH son criptográficamente mucho más resistentes. En AWS Learner Lab ya accedes con clave `.pem`, así que no pierdes nada.
+> **¿Por qué deshabilitar PasswordAuthentication?** Las contraseñas se pueden adivinar por fuerza bruta. Las claves SSH son criptográficamente mucho más resistentes. En AWS Learner Lab ya accedes con clave pública (ya sea vía Instance Connect o con la llave `.pem` del lab), así que no pierdes nada.
 
 ### 1.2 Abrir el nuevo puerto en el Security Group de AWS
 
@@ -374,7 +369,7 @@ Si no tienes `nmap`, puedes usar `nc` (netcat) para probar puertos puntuales, o 
 | `firewall-cmd: command not found` | `firewalld` no está instalado o no está activo | `sudo dnf install -y firewalld && sudo systemctl enable --now firewalld` |
 | `nmap` muestra el puerto 22 como "open" todavía | No removiste el servicio `ssh` del firewall, o no hiciste `--reload` | `sudo firewall-cmd --permanent --remove-service=ssh && sudo firewall-cmd --reload` |
 | `dnf install fail2ban` falla con "No match" | EPEL no está habilitado | Ejecuta `sudo dnf install -y epel-release` primero |
-| SSH rechaza la conexión con clave `.pem` | El archivo `.pem` tiene permisos demasiado abiertos | `chmod 400 labsuser.pem` |
+| Instance Connect dice "No se pudo conectar a la instancia" | Red Hat no trae el paquete Instance Connect preinstalado | Sigue la guía [Habilitar EC2 Instance Connect en Red Hat](../../recursos/instance-connect-rhel/) |
 
 ## Checklist antes de entregar
 

@@ -44,14 +44,12 @@ Si ya tienes la VM de [Act_3.1.2](../Act_3.1.2/) corriendo, puedes reutilizarla.
    | **Name** | `firewall-lab` |
    | **AMI** | Red Hat Enterprise Linux 9 (x86_64, Free tier eligible) |
    | **Instance type** | `t2.micro` |
-   | **Key pair** | `vockey` (o el que uses en tu Learner Lab) |
+   | **Key pair** | `vockey` (la llave por defecto del Learner Lab) |
    | **Security Group** | Permite SSH (22), HTTP (80), HTTPS (443) desde tu IP |
 
-3. Conéctate por SSH:
+3. Conéctate con **EC2 Instance Connect**: selecciona la instancia → **Connect** → pestaña **EC2 Instance Connect** → usuario `ec2-user` → **Connect**.
 
-   ```bash
-   ssh -i ~/Downloads/labsuser.pem ec2-user@<IP_PUBLICA>
-   ```
+   > **¿No conecta?** Red Hat no trae Instance Connect preinstalado. Sigue la guía [Habilitar EC2 Instance Connect en Red Hat](../../recursos/instance-connect-rhel/) (solo una vez por instancia).
 
 4. Verifica:
 
